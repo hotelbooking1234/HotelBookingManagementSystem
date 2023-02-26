@@ -1,0 +1,18 @@
+.star-rating {
+    display: inline-block;
+  }
+  
+  .star {
+    cursor: pointer;
+    font-size: 15px;
+    color: rgb(6, 6, 6);
+  }
+  
+  .filled {
+    color: gold;
+  }
+  .Top{
+    margin-top: 15%;
+    margin-left: 15px;
+    text-align: center;
+}

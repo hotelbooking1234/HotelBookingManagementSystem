@@ -1,0 +1,106 @@
+<div class="Top"></div>
+<h1> Please Provide Your Details </h1>
+    
+    <form (ngSubmit)="onSubmit()" #bookingDetailsForm="ngForm">
+     
+      <div class="form-group">
+        <label for="name">Enter Customer Name</label>
+        <input type="text" class="form-control" id="name" name="name"
+               [(ngModel)]="model.name" placeholder="Enter Name " #name="ngModel"  pattern="[a-zA-Z]+" required>
+               <div *ngIf="name.invalid">
+                <span style="color: red;" *ngIf="name.errors?.['required']">
+                    Please Enter Name
+                </span>
+                <span style="color: red;" *ngIf="name.errors?.['pattern']">
+                  Name is not valid.
+                </span>
+            </div>    
+      </div>
+   
+    <br><br>
+  
+      <div class="form-group">
+        <label for="bookedFrom">Check In Date</label>
+        <input type="date" class="form-control" id="bookedFrom" name="bookedFrom" class="validity"
+        [(ngModel)]="model.bookedFrom"    #bookedFrom="ngModel" min="{{today}}"  pattern="\d{4}-\d{2}-\d{2}"  required>
+        <div *ngIf="bookedFrom.invalid">
+          <span style="color: red;" *ngIf="bookedFrom.errors?.['required']">
+             Please select CheckIn Date 
+            </span>
+        </div>
+                  
+      </div>
+ 
+    <br><br>
+
+ 
+        <div class="form-group">
+          <label for="bookedTo">Check Out Date</label>
+          <input type="date" class="form-control" id="bookedTo" name="bookedTo" 
+          [(ngModel)]="model.bookedTo" #bookedTo="ngModel"  pattern="\d{4}-\d{2}-\d{2}"  min="{{today}}" required>
+
+          <div *ngIf="bookedTo.invalid">
+            <span style="color: red;" *ngIf="bookedTo.errors?.['required']">
+               Please select CheckOut Date </span>
+               
+          </div>
+                 
+
+        </div>
+   
+      <br><br>
+
+    
+        <div class="form-group">
+          <label for="noOfAdults">No of Adults</label>
+          <input type="text" class="form-control" id="noOfAdults" name="noOfAdults"
+                 [(ngModel)]="model.noOfAdults" placeholder="Enter No.Of Adults"  #noOfAdults="ngModel" required pattern="[1-9]+">
+
+                
+            <div *ngIf="noOfAdults.invalid">
+                <span style="color: red;" *ngIf="noOfAdults.errors?.['required']">
+
+                    Please mention number of adults
+                </span>
+                <span style="color: red;" *ngIf="noOfAdults.errors?.['pattern']">
+                  noOfAdults is not valid.
+                </span>
+
+            </div>
+          
+        </div>
+  
+      <br><br>
+
+        <div class="form-group">
+          <label for="noOfChildren"> No.Of Children</label>
+          <input type="text" class="form-control" id="noOfChildren" name="noOfChildren"
+                 [(ngModel)]="model.noOfChildren" placeholder="Enter No.Of Children " #noOfChildren="ngModel" required pattern="[0-9]+">
+
+                 <div *ngIf="noOfChildren.invalid">
+                  <span style="color: red;" *ngIf="noOfChildren.errors?.['required']">
+  
+                      Please mention number of Children
+                  </span>
+                  <span style="color: red;" *ngIf="noOfChildren.errors?.['pattern']">
+                    noOfChildren is not valid.
+                  </span>
+  
+              </div>
+          
+        </div>
+      <br><br>
+
+      <div class ="form-group">
+        <br/>
+        <input type = "submit" [disabled]="bookingDetailsForm.form.invalid" class = "forsubmit" value = "submit">
+        </div>
+        <br>
+    <!-- </form> -->
+ 
+  
+    <div *ngIf="status == true" class="alert alert-success mt-3">Your details has been submitted successfully.</div>
+    <div *ngIf="status == false" class="alert alert-danger mt-3">An error occurred while providing.</div>
+   
+
+<button routerLink='/addtransaction'>Proceed to Pay</button>

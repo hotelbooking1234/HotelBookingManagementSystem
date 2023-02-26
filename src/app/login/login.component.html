@@ -1,0 +1,67 @@
+<table style="width: 100%; height: 100%;margin-top: 50px;background-color: rgb(205, 201, 199);border:1 solid;">
+    <tr>
+      <td style="text-align: center; ">
+        <div *ngIf="loginStatus == false">
+          <table style="width: 100%; height: 100%;">
+            <tr><input type="text" placeholder="username" #username/></tr>
+            <tr><input type="password" placeholder="password" #password/> </tr>
+            <tr>
+              
+               <button (click)="attemptLogin(username.value,password.value)"> Login</button> 
+               <button > Register </button> 
+              
+            </tr>
+          </table>
+        </div>
+  
+        <div *ngIf="loginStatus == true">
+            <table style="margin-top:100;">
+              <tr>
+                <td> <img src="assets/images/user.jpg" width="65px" height="65px"> </td>
+                <td> 
+                     Welcome <b> {{loginUsername}} </b> as <i> {{userRole}} </i> 
+                     <br/>
+                     <a href="#"> profile </a>
+                     <a href="#" (click)="doLogout()" style="margin-left: 20px;"> logout </a>
+                     
+                </td>
+              </tr>
+            </table>
+        </div>
+  
+      </td>
+    </tr>
+  </table>
+  <!-- <hr class="line"/> -->
+  
+  <table style="width: 100%; height: 30%;margin-left: 5%;" *ngIf="loginStatus == true && userRole == 'admin'">
+    <tr>
+      <div class="nav">
+      <td class="link" style="width:25%"> <a  routerLink="/launchhotel">Register Hotel</a> </td>
+      <td class="link" style="width:25%"> <a   routerLink="/hotels">Hotels</a> </td>
+      <td class="link" style="width:25%"> <a   routerLink="/bookingdetails">Booking Details</a> </td>
+      <td class="link" style="width:25%"> <a  routerLink="/transactions">Transactions</a> </td>
+      </div>
+    </tr>
+  </table>
+  <!-- <hr class="line"/> -->
+  <table style="width: 100%; height: 30%;" *ngIf="loginStatus == true && userRole == 'User'">
+    <tr>
+      <!-- <td class="link"> <a  routerLink="/listhotels">Hotels</a> </td> -->
+      <div class="nav">
+      <td class="link" style="width:25%"> <a  routerLink="/search">Search By City</a> </td>
+      
+
+    <!-- <td class="link" style="width:25%"> <a  routerLink="/bookingbyId">My Bookings</a> </td> -->
+    <td class="link" style="width:25%"> <a routerLink="/transactionsByid">Transaction History</a> </td>
+    <td class="link" style="width:25%"> <a   routerLink="/review">FeedBack</a> </td>
+    </div>
+    </tr>
+  </table>
+  <hr stylw="background-color:blue"*ngIf="loginStatus == true"/>
+  <div *ngIf="loginStatus == false">
+    <img src="assets/images/login2.jpg" width="100%" />
+  </div>
+  <div *ngIf="loginStatus == true">
+    <router-outlet></router-outlet>
+  </div>

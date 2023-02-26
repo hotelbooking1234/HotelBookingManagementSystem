@@ -1,0 +1,61 @@
+<div class="Top">
+
+<form (ngSubmit)="onSubmit()" #transactionDetailsForm="ngForm">
+    <tr>
+      <div class="form-group"> 
+        <label>Customer Name</label>
+        <input type="text" [(ngModel)]="t.customerName" class="form-control" id="tname" name="tname"
+            #customerName="ngModel" placeholder="Enter Customer Name" required pattern="[a-zA-Z]+">
+        <div *ngIf="customerName.invalid">
+            <span style="color: red;" *ngIf="customerName.errors?.['required']">
+                Customer Name is required
+            </span>
+            <span style="color: red;" *ngIf="customerName.errors?.['pattern']">
+                Customer Name is not valid
+              </span>
+        </div>
+    </div>
+  </tr>
+  <br>
+   <div class="form-group">
+                   <label for="amount">Amount</label>
+                  <input type="text" class="form-control" id="amount" name="amount"
+                         [(ngModel)]="t.amount" placeholder="Enter Amount"  #amount="ngModel" required pattern="[0-9]+">
+                    <div *ngIf="amount.invalid">
+                        <span style="color: red;" *ngIf="amount.errors?.['required']">
+        
+                           Please Enter Valid Amount
+                        </span>
+                        <span style="color: red;" *ngIf="amount.errors?.['pattern']">
+                          Amount is not valid.
+                        </span>
+                      </div>
+                </div>
+  <br>
+  <br>
+  <tr>
+    <div class="form-group">
+      <label for="date"> Date</label>
+      <input type="date" class="form-control" id="date" name="date"
+      [(ngModel)]="t.date" min="{{today}}"required>
+                
+    </div>
+  </tr>
+  <br>
+
+  <br>
+  <tr>
+    <div class="form-group">
+      <label for="time">Time</label>
+      <input type="time" class="form-control" id="time" name="time"
+      [(ngModel)]="t.time" required>
+                
+    </div>
+  </tr>
+ 
+      <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div *ngIf="status == true" class="alert alert-success mt-3">Your Booking is Done Successfully</div>
+  <div *ngIf="status == false" class="alert alert-danger mt-3">An error occurred while providing.</div>
+</div>

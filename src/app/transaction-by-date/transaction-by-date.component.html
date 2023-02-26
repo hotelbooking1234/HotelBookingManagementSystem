@@ -1,0 +1,23 @@
+
+
+<h4>By Date </h4>
+<input type="date" #date>
+<button (click)="getTransaction1(date.value)">Load Transactions</button>
+
+
+
+<div *ngFor="let t of allTransactions" Style="background-color: rgb(190, 190, 193); text-align: center;">
+    <table>
+            
+            <tr>
+                <td>Date : {{t.date}}</td>
+                <td>name:{{t.customerName}}</td>
+                <td> amount:{{t.amount}}</td>
+                <td> amount:{{t.time}}</td>
+                
+            </tr>
+
+           
+            <hr/>
+    </table>
+</div>

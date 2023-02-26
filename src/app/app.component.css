@@ -1,0 +1,39 @@
+.img{
+    background-image: url('/assets/images/title.jpg');
+background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}  
+.header {
+    position: relative;
+  }
+  
+  .header img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(212, 88, 47, 0.5); 
+
+    
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
