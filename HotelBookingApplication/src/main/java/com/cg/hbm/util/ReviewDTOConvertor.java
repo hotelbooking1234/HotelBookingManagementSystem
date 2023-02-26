@@ -16,6 +16,7 @@ public class ReviewDTOConvertor {
 		
 		dto.setReveiwId(review.getReviewId());
 		dto.setUserName(review.getUserName());
+		dto.setUserReviewMsge(review.getUserReviewMsge());
 		dto.setStarRating(review.getStarRating());
 		dto.setHotelId(review.getHotelId());
 		dto.setRoomId(review.getRoomId());

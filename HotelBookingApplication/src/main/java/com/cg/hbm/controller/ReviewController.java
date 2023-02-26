@@ -1,5 +1,7 @@
 package com.cg.hbm.controller;
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -7,12 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.hbm.dto.ReviewDTO;
@@ -24,7 +26,7 @@ import com.cg.hbm.util.ReviewDTOConvertor;
 
 @RestController
 @RequestMapping("/review")
-
+@CrossOrigin(origins = {"http://localhost:4200/","http://localhost:2004/"},allowedHeaders = "*")
 public class ReviewController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -41,8 +43,7 @@ public class ReviewController {
 	logger.warn("---Review Controller Called --");
 	
 	System.err.println("Review Controller Called");
-    }
-	
+	}
 	@PostMapping("/addReview")
 	public ResponseEntity<ReviewResponseDTO> addReview(@RequestBody Review review) throws Exception
 	{
@@ -91,14 +92,10 @@ public class ReviewController {
 		
 	
 	@GetMapping("/hotel/{hotelId}")
-	public ResponseEntity<List<ReviewDTO>> getReviewByHotelId(@PathVariable int hotelId) throws InvalidInputDataException{
+	public ResponseEntity<List<ReviewDTO>> getReviewByHotelId(@PathVariable int hotelId) {
 		List<Review> allReviews = reviewService.getReviewByHotelId(hotelId);
 		
-		if(allReviews.isEmpty())
-		{
-			throw new InvalidInputDataException("no review exists with this key"+hotelId);
-		}
-		else {
+
 		   List<ReviewDTO> allReviewDTO = new ArrayList<>();
 		
 		    for (Review review : allReviews) {
@@ -107,18 +104,13 @@ public class ReviewController {
 		    }
 
 			return new ResponseEntity<List<ReviewDTO>>(allReviewDTO,HttpStatus.OK);
-			}			   
+					   
 	}
 		
-	@GetMapping("/room{roomId}")
-	public ResponseEntity<List<ReviewDTO>> getReviewByRoomId(@PathVariable int roomId) throws InvalidInputDataException{
+	@GetMapping("/room/{roomId}")
+	public ResponseEntity<List<ReviewDTO>> getReviewByRoomId(@PathVariable int roomId)  {
 		List<Review> allReviews = reviewService.getReviewByRoomId(roomId);
 		
-		if(allReviews.isEmpty())
-		{
-			throw new InvalidInputDataException("no review exists with this key"+roomId);
-		}
-		else {
 		
 		List<ReviewDTO> allReviewDTO = new ArrayList<>();
 		
@@ -129,8 +121,44 @@ public class ReviewController {
 		}
 		
 		return new ResponseEntity<List<ReviewDTO>>(allReviewDTO,HttpStatus.OK);
-		}
+		
 	}
+	@GetMapping("/avgreview/hotelId/{hotelId}")
+
+	 public int getAverageReviewByHotelId(@PathVariable int hotelId)
+    {
+	  List<Review> allReviews = reviewService.getReviewByHotelId(hotelId);
+	   int count = 0;
+	   int avg = 0;
+	   int totalreview = 0;
+	   for (Review review : allReviews) {
+	    count++;
+	    totalreview += review.getStarRating();
+	   }
+	   avg = totalreview / count;
+	   return avg;
+
+	  }
+	
+	@GetMapping("/avgreview/roomId/{roomId}")
+
+	 public int getAverageReviewByRoomId(@PathVariable int roomId)
+   {
+	  List<Review> allReviews = reviewService.getReviewByHotelId(roomId);
+	   int count = 0;
+	   int avg = 0;
+	   int totalreview = 0;
+	   for (Review review : allReviews) {
+	    count++;
+	    totalreview += review.getStarRating();
+	   }
+	   avg = totalreview / count;
+	  // System.out.println("average is");
+	   return avg;
+
+	  }
+	
+	
 	}
 
 		

@@ -12,15 +12,20 @@ public class TransactionsDTOConvertor
 	{
 		TransactionsDTOResponseActivity dto=new TransactionsDTOResponseActivity();
 		dto.setTransactionId(transactions.getTransactionId());
+		dto.setCustomerName(transactions.getCustomerName());
 		dto.setAmount(transactions.getAmount());
 		dto.setDate(transactions.getDate());
+		dto.setTime(transactions.getTime());
+		dto.setCity(transactions.getCity());
+		dto.setHistory(transactions.getHistory());
+		
 		dto.setMsg("Transactions saved");
 		return dto;
 	}
 
         public TransactionsDTO getTransactionsDTO(Transactions t)
         {
-        	TransactionsDTO obj=new TransactionsDTO(t.getTransactionId(),t.getAmount(),t.getDate());
+        	TransactionsDTO obj=new TransactionsDTO(t.getTransactionId(),t.getCustomerName(),t.getAmount(),t.getDate(),t.getTime(),t.getCity(),t.getHistory());
         	return obj;
         }
 }

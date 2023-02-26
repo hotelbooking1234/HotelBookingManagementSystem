@@ -9,13 +9,19 @@ import com.cg.hbm.exception.InvalidInputDataException;
 
 public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
-	List<Review> getReviewByStarRating(int starRating);	
-	
-	List<Review> getReviewByHotelId(int hotelId) throws InvalidInputDataException;
-	
-	List<Review> getReviewByRoomId(int roomId) throws InvalidInputDataException;
+	List<Review> getReviewByStarRating(int starRating);
+
+	List<Review> getReviewByHotelId(int hotelId);
+
+	List<Review> getReviewByRoomId(int roomId);
 
 	
+
+//List<Review> getReviewByStarRating(int starRating);	
+	
+	//List<Review> getReviewByHotelId(int hotelId) ;
+	
+	//List<Review> getReviewByRoomId(int roomId) ;
 	//public List<Review> getAllReviews();
 	
    

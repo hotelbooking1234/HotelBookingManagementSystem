@@ -1,8 +1,7 @@
-
 package com.cg.hbm.service;
 
 
-
+	
 import java.util.List;
 
 
@@ -11,22 +10,27 @@ import org.springframework.stereotype.Service;
 import com.cg.hbm.entity.Hotel;
 import com.cg.hbm.exception.RecordNotFoundException;
 
+
 @Service
 
 public interface IHotelService {
-	
+
 	public Hotel addHotel(Hotel hotel);
-	
-	public Hotel updateRoomByHotelId(int hId,int rId)  ;
 
-	public List<Hotel> showAllHotels()  throws RecordNotFoundException; 
+	public List<Hotel> getAllHotels() ;
+
+	public Hotel getHotelById(int id) throws RecordNotFoundException;
+
+	public Hotel deleteHotelById(int hId);
+
+	//public Hotel getHotelBystarRating(int snumber);
+	public Hotel updateHotel(int hId);
 	
-	public Hotel getHotelById(int hotelId)  throws RecordNotFoundException ;
+
+	public List<Hotel> getHotelByCity(String city);
 
 	
 
-	public Hotel deleteHotel(int hotelId) throws RecordNotFoundException;
+	}
 
-	
-	
-}
+

@@ -1,6 +1,8 @@
 package com.cg.hbm.service;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -103,9 +105,31 @@ public class BookingDetailsImpl implements IBookingDetailsService {
             throw new BookingDetailsNotFoundException("No booking is found");
         }
     }
+	@Override
+	public BookingDetails findByBookingId(int bookingId){
+		return bookingRepo.findByBookingId(bookingId);
+	}
+	@Override
+	public List<BookingDetails> getBookingsByBookedFrom(String bookedFrom) 
+	{ 
+	List<BookingDetails> allBookings = bookingRepo.findAll();
+	List<BookingDetails> requiredBookings = new ArrayList<>();
+	for (BookingDetails obj : allBookings) {
+	if ( obj.getBookedFrom().equalsIgnoreCase(bookedFrom)) {
+	requiredBookings.add(obj); 
+	}
+	}
+	return requiredBookings;
+	}
+
+
+
+	
+	
+	
+	
+
+	
 }
 
 	
-	
-
-

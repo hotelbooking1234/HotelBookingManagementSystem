@@ -1,53 +1,64 @@
 package com.cg.hbm.entity;
 
-import javax.persistence.CascadeType;
-
-
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Data
+
 @Entity
-@AllArgsConstructor
+@Table(name = "userModule")
+@Data
 @NoArgsConstructor
-@Table(name="users")
 public class User {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(updatable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
-	
-	@Column(name = "user_name",unique = true, updatable = false)
-	
-	private String userName;
-	
-	@Column(name = "email_address",unique = true,nullable = false)
-	private String email;
-	
-	
+
+	private String firstName;
+	private String lastName;
 	private String password;
+	private long phoneNumber;
+	private String gender;
+	private String emailId;
+	private String userRole;
+
 	
 	
-	private String mobile;
-	
-	
-	private String address;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private BookingDetails booking;
-	
-	public User(int userId) {
-		this.userId = userId;
+
+	public User(String firstName, String lastName, String password, long phoneNumber, String gender,String emailId,String userRole) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.emailId=emailId;
+		this.userRole = userRole;
+		
+	}
+
+	public User(String firstName) {
+		super();
+		this.firstName = firstName;
+	}
+
+	public User(String firstName, String lastName, String password, String emailId,String userRole) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.emailId = emailId;
+		this.userRole = userRole;
 	}
 	
 	
+
+
 }

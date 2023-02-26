@@ -36,27 +36,20 @@ public class ReviewServiceImpl implements ReviewService{
 
 	
 	@Override
-	public List<Review> getReviewByHotelId(int hotelId) throws InvalidInputDataException {
+	public List<Review> getReviewByHotelId(int hotelId) {
 		
-		if(reviewRepository.existsById(hotelId)) {
+		
 		return reviewRepository.getReviewByHotelId(hotelId);
-		}
-		else {
-			throw new InvalidInputDataException("No review exists with this key = "+hotelId);
-		}
+		
 		
 	}
 	
 	@Override
-	public List<Review> getReviewByRoomId(int roomId) throws InvalidInputDataException {
+	public List<Review> getReviewByRoomId(int roomId) {
 		
-		if(reviewRepository.existsById(roomId)) {
 			return reviewRepository.getReviewByRoomId(roomId);
 			}
-			else {
-				throw new InvalidInputDataException("No review exists with this key = "+roomId);
-			}
-	}
+			
 	
 	
 }

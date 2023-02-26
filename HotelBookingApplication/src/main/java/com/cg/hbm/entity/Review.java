@@ -3,10 +3,13 @@ package com.cg.hbm.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +23,6 @@ public class Review {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	
 	private int reviewId;
-	
 	private int hotelId;
 	private LocalDate reviewDate;
 	private int roomId;
@@ -28,10 +30,10 @@ public class Review {
 	private String userReviewMsge;
 	private int starRating;
 	private boolean verifiedStatus;
-	
-	public Review(int hotelId, LocalDate reviewDate, int roomId, String userName, String userReviewMsge, int starRating,
-			boolean verifiedStatus) {
+	public Review( int hotelId, LocalDate reviewDate, int roomId, String userName, String userReviewMsge,
+			int starRating, boolean verifiedStatus) {
 		super();
+		
 		this.hotelId = hotelId;
 		this.reviewDate = reviewDate;
 		this.roomId = roomId;
@@ -40,12 +42,6 @@ public class Review {
 		this.starRating = starRating;
 		this.verifiedStatus = verifiedStatus;
 	}
-
-	public void setHotelId(Object object) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	
 	
 }

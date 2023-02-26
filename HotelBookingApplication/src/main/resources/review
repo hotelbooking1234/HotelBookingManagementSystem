@@ -1,0 +1,10 @@
+{
+	"hotelId":1, 
+	"reviewDate":"2022-03-12",
+	"roomId":3,
+	"userName":"ramesh",
+	"userReviewMsge":"Avg",
+	"starRating":4.5,
+	"verifiedStatus":true
+	
+}

@@ -1,12 +1,15 @@
 package com.cg.hbm.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +28,10 @@ import com.cg.hbm.util.BookingDetailsDTOConvertor;
 
 @RestController
 @RequestMapping("/booking")
+
+@CrossOrigin(origins= {"http://localhost:4200","http://localhost:2004"},allowedHeaders="*")
+
+
 public class BookingDetailsController {
 	@Autowired
 	IBookingDetailsService bookingService;
@@ -67,5 +74,24 @@ public ResponseEntity<List<BookingDetailsDTO>> getAllBookingDetails()throws Book
 	}
 	return new ResponseEntity<List<BookingDetailsDTO>>(allBookingDetailsDTO,HttpStatus.OK);
 	}
+
+@GetMapping("/byBookedFrom/{bookedFrom}")
+public ResponseEntity<List<BookingDetailsDTO>> getBookingsByBookedFrom(@PathVariable String bookedFrom) throws Exception {
+List<BookingDetails> allBookings = bookingService.getBookingsByBookedFrom(bookedFrom);
+List<BookingDetailsDTO> allBookingsDTO = new ArrayList<>();
+for (BookingDetails bookingDetails : allBookings)
+allBookingsDTO.add(bookingDetailsDTOConvertor.getBookingDetailsDTO(bookingDetails));
+return new ResponseEntity<List<BookingDetailsDTO>>(allBookingsDTO, HttpStatus.OK);
 }
 
+
+
+@GetMapping("/bookingId/{bookingId}")
+public ResponseEntity<BookingDetailsDTO> findByBookingId(@PathVariable int bookingId){
+BookingDetails bookingDetails =bookingService.findByBookingId(bookingId);
+BookingDetailsDTO dtoObj = bookingDetailsDTOConvertor.getBookingDetailsDTO(bookingDetails);
+return new ResponseEntity<BookingDetailsDTO>(dtoObj, HttpStatus.OK);
+}
+
+
+}

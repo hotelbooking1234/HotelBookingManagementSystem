@@ -12,6 +12,6 @@ import com.cg.hbm.exception.InvalidInputDataException;
 public interface TransactionsRepository  extends JpaRepository<Transactions, Integer> {
 //	Transactions addTransactions(Transactions transactions);
 	List<Transactions> getTransactionsByTransactionId(int transactionId)throws InvalidInputDataException;
-
+	List<Transactions> getTransactionsByDate(String date);
 	
 } 

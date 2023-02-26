@@ -10,15 +10,13 @@ import com.cg.hbm.exception.RoomDetailsIdNotFoundException;
 @Service
 public interface IRoomDetailsService {
 
-	public RoomDetails addRoomDetails(RoomDetails roomDetails) throws RoomDetailsIdNotFoundException;
+	public RoomDetails addRoomDetails(RoomDetails roomDetails) throws Exception;
 	
-	public RoomDetails updateRoomDetails(RoomDetails roomDetails) throws RoomDetailsIdNotFoundException;
+	 public List<RoomDetails> getRoomsByHotelId(int hotelId);
+		
+		public List<RoomDetails> getAllRooms();
 	
-	public RoomDetails removeRoomDetails(int roomDetails) throws RoomDetailsIdNotFoundException;
 	
-	public List<RoomDetails> showAllRoomDetails() throws RoomDetailsIdNotFoundException;
-	
-	public RoomDetails showRoomDetails(int roomDetailsId) throws RoomDetailsIdNotFoundException;
 
 	
 }

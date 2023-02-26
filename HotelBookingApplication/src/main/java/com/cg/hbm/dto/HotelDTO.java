@@ -13,6 +13,15 @@ public class HotelDTO {
 	private String city;
 	private String hotelName;
 	private String address;
+	private String imageName;
+	private String description;
+	private double avgRatePerDay;
+	private String email;
+	private String phone;
+	private String website;
+	private int starRating;
+	
+	
 	
 	
 

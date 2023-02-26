@@ -1,5 +1,6 @@
 package com.cg.hbm.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -22,18 +23,22 @@ public class BookingDetails {
 	
 	
 	private int bookingId;
+	
+	
 	private int hotelId;
 	private int roomId;
 	private int userId;
-	private Date bookedFrom;
-	private Date bookedTo;
+	private String bookedFrom;
+	private String bookedTo;
 	private int noOfAdults;
 	private int noOfChildren;
 	private double amount;
-	public BookingDetails(int bookingId, int hotelId, int roomId, int userId, Date bookedFrom, Date bookedTo,
-			int noOfAdults, int noOfChildren, double amount) {
+	private String name;
+	private int PhoneNumber;
+	public BookingDetails(int hotelId, int roomId, int userId, String bookedFrom, String bookedTo,
+			int noOfAdults, int noOfChildren, double amount,String name,int  PhoneNumber) {
 		super();
-		this.bookingId = bookingId;
+		
 		this.hotelId = hotelId;
 		this.roomId = roomId;
 		this.userId = userId;
@@ -42,6 +47,8 @@ public class BookingDetails {
 		this.noOfAdults = noOfAdults;
 		this.noOfChildren = noOfChildren;
 		this.amount = amount;
+		this.name=name;
+		this.PhoneNumber=PhoneNumber;
 	}
 	public void setUsers(User user) {
 		// TODO Auto-generated method stub

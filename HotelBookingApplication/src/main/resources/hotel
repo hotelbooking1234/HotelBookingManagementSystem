@@ -1,0 +1,14 @@
+{
+	"city":"New Delhi",
+	"hotelName":"Imperio",
+	"address":"8-67",
+	"description":"SUper",
+	"avgRatePerDay":600,
+	"email":"imperio@gmail.com",
+	"phone":"9867453623",
+	"starRating":5,
+	"website":"https://imperio.com",
+	"imageName":"imperio.jpg"
+	
+	
+}

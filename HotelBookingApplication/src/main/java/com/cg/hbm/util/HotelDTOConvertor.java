@@ -23,7 +23,7 @@ public class HotelDTOConvertor {
 	}
 	
 	public HotelDTO getHotelDTO(Hotel h){
-		HotelDTO obj= new HotelDTO(h.getHotelId(),h.getHotelName(),h.getAddress(),h.getCity());
+		HotelDTO obj= new HotelDTO(h.getHotelId(),h.getCity(),h.getHotelName(),h.getAddress(),h.getImageName(),h.getDescription(),h.getAvgRatePerDay(),h.getEmail(),h.getPhone(),h.getWebsite(),h.getStarRating());
 		return obj;
 		
 		

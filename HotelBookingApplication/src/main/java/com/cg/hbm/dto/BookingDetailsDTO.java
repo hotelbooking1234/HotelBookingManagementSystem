@@ -1,5 +1,6 @@
 package com.cg.hbm.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -13,9 +14,14 @@ public class BookingDetailsDTO {
 
 	private int bookingId;
 	
-	private Date bookedFrom;
-	private Date bookedTo;
+	private String bookedFrom;
+	private String bookedTo;
 	private int noOfAdults;
 	private int noOfChildren;
 	private double amount;
+	private String name;
+	private int PhoneNumber;
+	private int hotelId;
+	private int roomId;
+	private int userId;
 }

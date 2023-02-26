@@ -21,17 +21,20 @@ public class BookingDetailsDTOConvertor {
 	dto.setNoOfAdults(bookingDetails.getNoOfAdults());
 	dto.setNoOfChildren(bookingDetails.getNoOfChildren());
 	dto.setAmount(bookingDetails.getAmount());
+	dto.setName(bookingDetails.getName());
+	dto.setPhoneNumber(bookingDetails.getBookingId());
+	dto.setHotelId(bookingDetails.getHotelId());
+	dto.setRoomId(bookingDetails.getRoomId());
+	dto.setUserId(bookingDetails.getUserId());
 	dto.setMsg("Booking Saved");
 	return dto;
 	}
 	public BookingDetailsDTO getBookingDetailsDTO(BookingDetails b)
 	{
-		BookingDetailsDTO obj=new BookingDetailsDTO(b.getBookingId(),b.getBookedFrom(),b.getBookedTo(),b.getNoOfAdults(),b.getNoOfChildren(),b.getAmount());
+		BookingDetailsDTO obj=new BookingDetailsDTO(b.getBookingId(),b.getBookedFrom(),b.getBookedTo(),b.getNoOfAdults(),b.getNoOfChildren(),b.getAmount(),b.getName(),b.getBookingId(),b.getHotelId(),b.getRoomId(),b.getUserId());
 		return obj;
 	}
 }
-	
-	
 	
 	
 	

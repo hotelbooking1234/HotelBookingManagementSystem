@@ -1,5 +1,7 @@
 package com.cg.hbm.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import com.cg.hbm.repository.TransactionsRepository;
 
 public class TransactionsServiceImpl implements TransactionsService {
 	@Autowired
+	
 	private TransactionsRepository transactionsrepository;
 
 	@Override
@@ -30,6 +33,30 @@ public class TransactionsServiceImpl implements TransactionsService {
 		return transactionsrepository.findAll();
 
 	}
+	
+	
+	@Override
+	 
+	public List<Transactions> getTransactionsByDate(String date) {
+	 
+	List<Transactions> allTransactions = transactionsrepository.findAll();
+	 
+	List<Transactions> requiredTransactions = new ArrayList<>();
+	 
+	for (Transactions obj : allTransactions) {
+	 
+	if ( obj.getDate().equalsIgnoreCase(date)) {
+	 
+	  requiredTransactions.add(obj);
+	 
+	}
+	}
+
+	
+	return requiredTransactions;
+	
+	}
+	
 
 	@Override
 
@@ -49,4 +76,6 @@ public class TransactionsServiceImpl implements TransactionsService {
 
 	}
 
-}
+	
+	
+	}

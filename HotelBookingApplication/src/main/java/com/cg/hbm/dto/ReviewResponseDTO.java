@@ -10,6 +10,7 @@ public class ReviewResponseDTO {
 	
 	
 	private String userName;
+	private String userReviewMsge;
 	private int starRating;
 	private int hotelId;
 	private int roomId;
